@@ -20,7 +20,5 @@ func main() {
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	// let's call the templates
-	myTemplates.ExecuteTemplate(w, "header", nil)
 	myTemplates.ExecuteTemplate(w, "index", nil)
-	myTemplates.ExecuteTemplate(w, "footer", nil)
 }
