@@ -1,20 +1,24 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+	"text/template"
 )
 
+// Let's create some templates
+var myTemplates = template.Must(template.ParseGlob("templates/*"))
+
 func main() {
-	// Solicitud para acceder a funcion Index
+	// We call the index function
 	http.HandleFunc("/", Index)
-	// Mensaje en consola
+	// Show in console that the server is up and running
 	log.Println("Server is up and running")
-	// Puerto en el que se sirve la app
-	http.ListenAndServe(":8080", nil)
+	// We serve in the following port
+	http.ListenAndServe(":8081", nil)
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello friend")
+	//fmt.Fprint(w, "Hello friend")
+	myTemplates.ExecuteTemplate(w, "index", nil)
 }
