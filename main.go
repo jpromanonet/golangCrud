@@ -15,10 +15,12 @@ func main() {
 	// Show in console that the server is up and running
 	fmt.Println("Server is up and running")
 	// We serve in the following port
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8082", nil)
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprint(w, "Hello friend")
+	// let's call the templates
+	myTemplates.ExecuteTemplate(w, "header", nil)
 	myTemplates.ExecuteTemplate(w, "index", nil)
+	myTemplates.ExecuteTemplate(w, "footer", nil)
 }
