@@ -6,9 +6,13 @@ import (
 	"net/http"
 )
 
-func main() {|
+func main() {
+	// Solicitud para acceder a funcion Index
 	http.HandleFunc("/", Index)
+	// Mensaje en consola
 	log.Println("Server is up and running")
+	// Puerto en el que se sirve la app
+	http.ListenAndServe(":8080", nil)
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
