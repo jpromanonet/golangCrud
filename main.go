@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 	"text/template"
 )
@@ -13,7 +13,7 @@ func main() {
 	// We call the index function
 	http.HandleFunc("/", Index)
 	// Show in console that the server is up and running
-	log.Println("Server is up and running")
+	fmt.Println("Server is up and running")
 	// We serve in the following port
 	http.ListenAndServe(":8081", nil)
 }
